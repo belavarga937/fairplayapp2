@@ -60,8 +60,8 @@ const User = mongoose.model('User', userSchema);
 //Nutzer erstellen
 const createNewUser = async () => {
     try {
-        const password = await hashingPasswords("admin");
-        const newUser = await new User({name: "admin", password: password});
+        const password = await hashingPasswords("04.sophiescholl");
+        const newUser = await new User({name: "orzeszko", password: password});
         await newUser.save();
         console.log("Benutzer erdolgreich gespeichert");
     }

@@ -1,263 +1,224 @@
+/* Reset */
 * {
     box-sizing: border-box; /* Verhindert Overflow */
-}
-
-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-body {
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: "Roboto Condensed", serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
     margin: 0;
     padding: 0;
-    width: 100%;
 }
 
 a {
-    padding: 5px;
-    margin-left: 10px;
     text-decoration: none;
-    background-color: #f8b7cb;
-    border-style: solid;
-    border-color: #f8b7cb;
     color: black;
 }
 
 a:hover {
-    background-color: white;
-    color: black;
+    background-color: #f8b7cb;
 }
 
+body {
+    font-family: "Roboto Condensed", serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Navigation, Inhalt, Footer */
+    grid-template-columns: 100%;
+    min-height: 100vh; /* Vollbild */
+    background-image: url(/photos/23443814346017.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Navigation Bar */
 .nav-bar {
-    margin-top: 1%;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    width: 100%;
-    height: 55px;
+    display: grid;
+    grid-template-columns: 1fr auto; /* Linke und rechte Navigation */
+    align-items: center;
     padding: 20px;
+    /*background-color: white;*/
     color: white;
 }
 
 .nav-bar-left {
-    background-image: url(photos/FairPlay.png);
+    background-image: url(photos/logo.png);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 250px;
-    height: 200px;
+    height: 250px; /* Einheitlich */
 }
 
-.nav-bar-right {
+.nav-bar-right a {
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #f8b7cb;
+    color: black;
+    border-radius: 5px;
+}
+
+.nav-bar-right a:hover {
+    background-color: white;
+}
+
+/* Hauptinhalt */
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Flexible Spalten */
+    gap: 20px; /* Abstand zwischen den Bereichen */
+    padding: 20px;
+}
+
+ .content {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
+    justify-content: center; /* Zentriert horizontal */
+    align-items: center; /* Zentriert vertikal */
+    height: 50vh; /* Volle Höhe des Viewports */
+    gap: 20px; /* Abstand zwischen den Bereichen */
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
 }
-
 
 .content {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-    width: 95%;
-    max-width: 95%;
-    height: 500px;
-    background-image: url(/photos/23443814346017.jpg);
-    background-size: cover;
-}
-
-.content_video {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-}
-
-.video {
-    width: 100%;
-    max-width: 800px;
-}
-
-video {
-    width: 100%;
-    height: auto;
-}
-
-footer {
-    margin-top: 20px;
-    padding: auto;
+    display: grid;
+    grid-template-columns: 1fr; /* Standardmäßig eine Spalte */
+    gap: 20px; /* Abstand zwischen den Bereichen */
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 95%;
-    max-width: 95%;
-    height: 25vh;
-    background-color: azure;
-    color: black;
+    background-size: cover;
+    background-position: center;
     overflow: hidden;
 }
 
-ul {
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+@media (min-width: 600px) {
+    .content {
+        grid-template-columns: 1fr 1fr; /* Zwei Spalten bei größeren Bildschirmen */
+        flex-direction: row;
+    }
 }
 
-ul li {
-    border-left-style: groove;
-    margin-left: 15px;
-    padding-left: 15px;
+@media (min-width: 900px) {
+    .content {
+        grid-template-columns: 1fr 1fr 1fr; /* Drei Spalten bei noch größeren Bildschirmen */
+        flex-direction: row;
+    }
 }
 
 .log_in_form {
-    border-style: solid;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.2); /* Transparenter Hintergrund */
-    flex-direction: column;
-    width: 25%;
-    height: fit-content;
-    overflow: hidden;
     padding: 20px;
-    backdrop-filter: blur(50px); /* Glas-Effekt */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Leichter Schatten */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8);
+    width: fit-content; /* Passt sich an den Viewport an */
+    max-width: 400px; /* Begrenzung der Breite */
+    height: auto; /* Dynamische Höhe */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Verhindert Überlaufen */
 }
 
 .log_in_form h1 {
-    background-color: transparent;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
 .input-group {
+    display: flex;
     flex-direction: column;
-    width: 250px;
-    max-width: 300px;
-    height: fit-content;
+    width: 100%;
     margin-bottom: 15px;
 }
 
-form {
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-form input {
-    width: 100%;
-    height: 30px;
-    border-radius: 5px;
-}
-
-form label {
-    align-self: flex-start;
+.input-group label {
     margin-bottom: 5px;
 }
 
-#submit {
-    width: 100%;
-    height: 45px;
+.input-group input {
+    padding: 10px;
     border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#submit {
     background-color: #333;
     color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 25px;
 }
 
 .header {
-    text-align: left;
-    width: 25%;
-    height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.5em;
+    padding: 20px;
+    color: #333; /* Dunkler Text */
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
 }
-/* Media Queries für verschiedene Bildschirmgrößen */
+
+/* Footer */
+footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: azure;
+    text-align: center;
+    flex-direction: column;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+}
+
+li {
+    margin-left: 15px;
+    padding-left: 15px;
+    border-left-style: solid;
+}
+
+/* Flexibles Verhalten bei kleineren Geräten */
 @media (max-width: 768px) {
     .nav-bar {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
+        text-align: center;
     }
 
     .nav-bar-left {
-        width: 100px;
-        height: 80px;
+        margin-bottom: 10px;
     }
 
     .content {
-        flex-direction: column;
-        align-items: center;
-        height: auto;
-    }
-
-    .content_video {
-        width: 100%;
-    }
-
-    .video {
-        width: 100%;
+        grid-template-columns: 1fr; /* Einzelspalte */
     }
 
     .log_in_form {
-        width: 90%;
-    }
-
-    .input-group {
         width: 100%;
     }
 }
 
 @media (max-width: 480px) {
-    .nav-bar {
-        flex-direction: column;
-        align-items: center;
+    .nav-bar-right a {
+        font-size: 14px;
+        padding: 5px;
     }
 
-    .nav-bar-left {
-        width: 80px;
-        height: 60px;
-    }
-
-    .content {
-        flex-direction: column;
-        align-items: center;
-        height: auto;
-    }
-
-    .content_video {
-        width: 100%;
-    }
-
-    .video {
-        width: 100%;
-    }
-
-    .log_in_form {
-        width: 100%;
-        padding: 10px;
-    }
-
-    .input-group {
-        width: 100%;
-    }
-
-    form input {
-        height: 30px;
-    }
-
-    #submit {
-        height: 50px;
+    footer {
+        grid-template-columns: 1fr; /* Einzelspalte */
     }
 }

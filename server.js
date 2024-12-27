@@ -42,20 +42,22 @@ app.post('/log-in', async (req, res) => {
     console.log(name, password);
     try {
         const findUser = await User.findOne({name});
-        if (!findUser) {res.status(404).json({ message: 'Benutzer nicht gefunden' });} 
+        if (!findUser) {return res.status(404).sendFile(__dirname + '/view/error.html');}  
+        //{res.status(404).json({ message: 'Benutzer nicht gefunden' });} 
         
         const isMatch = await comparePasswords(password, findUser.password);
-        if (!isMatch) {return res.status(401).json({ message: 'Passwort inkorrekt' });}
+        if (!isMatch) {return res.status(404).sendFile(__dirname + '/view/error.html');} //return res.status(401).json({ message: 'Passwort inkorrekt' });}
 
         //Token erstellen
         const token = jwt.sign({id: findUser._id, name: findUser.name}, process.env.JWT_SECRET, {expiresIn: '2h'});
         
         res.cookie('token', token, {httpOnly: true});
-        res.redirect('/play-video');
+       return res.redirect('/play-video');
     }
     catch (error){
         console.error(error);
-        res.status(500).json({ message: 'Serverfehler' });
+        //res.status(500).json({ message: 'Serverfehler' });
+        res.status(500).sendFile(__dirname + '/view/error.html');
     }
 })
 
@@ -63,7 +65,8 @@ app.post('/log-in', async (req, res) => {
 const verifyToken = (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
-        return res.status(403).json({ message: 'Kein Token, Autorisierung verweigert' });
+        //return res.status(403).json({ message: 'Kein Token, Autorisierung verweigert' });
+        return res.status(403).sendFile(__dirname + '/view/error.html');
     }
     try {
         const tokenDecoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -72,7 +75,8 @@ const verifyToken = (req, res, next) => {
     }
     catch (error) {
         console.error(error);
-        res.status(401).json({ message: 'Token ist nicht gültig' });
+        //res.status(401).json({ message: 'Token ist nicht gültig' });
+        return res.status(403).sendFile(__dirname + '/view/error.html');
     }
 };
 

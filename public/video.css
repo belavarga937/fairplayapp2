@@ -1,11 +1,6 @@
 
 .content_video {
-    width: 95%;
-    max-width: 95%;
-    background-image: url(/photos/23443814346017.jpg);
-    background-size: cover;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
     border-style: none;
 }
 
