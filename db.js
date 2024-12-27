@@ -4,8 +4,8 @@ const app = express();
 const port = 3000;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
-const { genSalt } = require('bcryptjs');
+const bcrypt = require('bcryptjs');
+//const { genSalt } = require('bcryptjs');
 require('dotenv').config();
 
 const conncetDB = () => {
