@@ -88,6 +88,10 @@ const httpsOptions = {
     cert: fs.readFileSync('./cert.pem')
 };
 
-https.createServer(httpsOptions, app).listen(port, '0.0.0.0',() => {
-    console.log('Server läuft auf Port ' + port);
+app.listen(port, '0.0.0.0', () => {
+    console.log('HTTP Server läuft auf Port ' + port);
 });
+
+/*https.createServer(httpsOptions, app).listen(port, '0.0.0.0',() => {
+    console.log('Server läuft auf Port ' + port);
+});*/
