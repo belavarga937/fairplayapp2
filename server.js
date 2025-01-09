@@ -19,7 +19,7 @@ app.use(cookieParser());
 conncetDB();
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/view/index.html');
 });
 
 app.get('/users/admin', async (req, res) => {

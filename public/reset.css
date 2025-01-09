@@ -2,7 +2,18 @@ html {
     color-scheme: light;
 }
 
+body {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
 *::before, *::after {
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
